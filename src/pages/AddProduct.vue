@@ -15,9 +15,9 @@
       </div>
        <div class="form-group">
     <label for="exampleFormControlSelect1">Select Supplier</label>
-    <select class="form-control col-md-8" id="exampleFormControlSelect1" v-model="Product.selectedSupplier">
+    <select class="form-control col-md-8" id="exampleFormControlSelect1" v-model="Product.supplier_id">
        
-      <option  v-for ="supplier in suppliers"  v-bind:key="supplier" :selected="supplier=='Muaz'"> {{supplier}}</option>
+      <option  v-for ="supplier in suppliers"  v-bind:key="supplier.id" :selected="supplier.id=='1'" v-bind:value="supplier.id"> {{supplier.name}}</option>
       
     
     </select>
@@ -44,31 +44,42 @@ export default {
   components: {},
   data() {
     return {
-         suppliers: ['Muaz','Ali','Hamaza'],
+      suppliers: [],
       Product: {
-        name: "",
-        price: "",
-        selectedSupplier:"Muaz"
+        name: "re",
+        price: "4",
+        supplier_id:"1",
+        user_id:"2"
       },
     };
   },
   methods: {
-    addProduct() {
-      alert("Your data: " + JSON.stringify(this.Product));
-      //  const baseURI = 'https://jsonplaceholder.typicode.com/users';
-      //   this.$http.get(baseURI)
-      //   .then((result) => {
-      //     console.log(result);
-      //   });
 
-      //   axios.post("https://ledgerapp-73bf7.firebaseio.com/suppliers", name=this.supplier.name)
-      //     .then(response => console.log(response))
-      //     .catch(error => {
-      //       this.errorMessage = error.message;
-      //       console.error("There was an error!", error);
-      //     });
+      addProduct () {
+      //  alert('Your data: ' + JSON.stringify(this.supplier));
+      const baseURI = 'http://127.0.0.1:8000/api/products';
+      this.$http.post(baseURI,this.Product)
+      .then((response) => {
+        console.log(response);
+
+        this.$router.push('/admin/products');
+
+      });
     },
+    getSuppliers(){
+      const baseURI = 'http://127.0.0.1:8000/api/suppliers';
+       this.$http.get(baseURI)
+      .then((response) => {
+        console.log(response);
+        this.suppliers=response.data;
+      });
+
+
+    }
   },
+  created(){
+    this.getSuppliers();
+  }
 };
 </script>
 <style>

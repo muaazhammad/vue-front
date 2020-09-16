@@ -75,7 +75,7 @@ const routes = [
       },
       {
         path: 'products/create',
-        name: 'create',
+        name: 'product/create',
         component: AddProduct
       },
       {
@@ -85,7 +85,7 @@ const routes = [
       },
       {
         path: 'months/create',
-        name: 'create',
+        name: 'months/create',
         component: AddBillingMonth
       },
       {

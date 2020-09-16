@@ -1,25 +1,44 @@
 <template>
- 
-  <tr> 
-            <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td> 
-               </tr> 
- 
+  <tr>
+    <td scope="row">{{data.id}}</td>
+    <td>{{data.name}}</td>
+    <td>{{data.price}}</td>
+    <td>{{data.supplier_id}}</td>
+    <td>
+        <button @click="onDelete">delete</button> &nbsp;
+       
+         <button @click="onEdit">Edit</button>
+     
+    </td>
+  </tr>
 </template>
-<script>
 
+<script>
+ import axios from 'axios';
 export default {
-  components: {
-   
-  },
   
-  data() {
+  name: "Product",
+
+  props: ["data"],
+
+  methods:{
    
-    
+   onDelete(){
+      //  alert('delete the product with id '+ this.data.id );
+       this.$emit('idToDelete', this.data.id);
+     
+       
+
+   }
+
   },
+
+  data()
+   {
+
+   },
 };
 </script>
+
 <style>
 </style>

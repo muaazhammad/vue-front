@@ -14,66 +14,73 @@
                 class="btn btn-primary btn-fill"
               >Add Product</router-link>
             </template>
-            <l-table class="table-hover table-striped"
-                     :columns="table1.columns"
-                     :data="table1.data">
-            </l-table>
 
-          
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Supplier</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <Product v-for="product in tableData" :key="product" :data="product" @idToDelete="onDelete" ></Product>
+              </tbody>
+            </table>
           </card>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import LTable from "src/components/Table.vue";
 import Card from "src/components/Cards/Card.vue";
-const tableColumns = ["Id", "Name", "phone", "add_by", "products"];
-const tableData = [
-  {
-    id: 1,
-    name: "Dakota Rice",
-    phone: "123456789",
-    add_by: "Niger",
-    products: "Oud Turnhout",
-  },
-  {
-    id: 2,
-    name: "Minerva Hooper",
-    phone: "123456789",
-    add_by: "Curaçao",
-    products: "Sinaai Waas",
-  },
-  {
-    id: 3,
-    name: "Sage Rodriguez",
-    phone: "123456789",
-    add_by: "Netherlands",
-    products: "Baileux",
-  },
-  {
-    id: 4,
-    name: "Philip Chaney",
-    phone: "123456789",
-    add_by: "Korea",
-    products: "Overland Park",
-  },
-];
+import Product from "./Product.vue";
+ import axios from 'axios';
+
 export default {
+
   components: {
     LTable,
     Card,
+    Product,
   },
   data() {
     return {
-      table1: {
-        columns: [...tableColumns],
-        data: [...tableData],
-      },
-    
+      tableData: [],
     };
   },
+  methods: {
+    getProducts() {
+      //implement axios to get customers
+      const baseURI = "http://127.0.0.1:8000/api/products";
+        axios.get(baseURI).then((response) => {
+        console.log(response.data);
+        this.tableData = response.data;
+      });
+    },
+
+      onDelete(e) {
+      //implement axios to delete product
+      const baseURI = "http://127.0.0.1:8000/api/products/"+e;
+      axios.delete(baseURI)
+      .then((response) => {
+      this.getProducts();
+      console.log(response);
+      // this.$router.push('/admin/products');
+
+      });
+    },
+  },
+  created() {
+    //call getproducts here
+    this.getProducts();
+  },
+
 };
 </script>
 <style>

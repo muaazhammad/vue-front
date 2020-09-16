@@ -65,7 +65,7 @@
     methods: {
       updateProfile () {
       //  alert('Your data: ' + JSON.stringify(this.supplier));
-      const baseURI = 'http://127.0.0.1:8000/api/suppliers';
+      const baseURI = 'http://127.0.0.1:8000/api/products';
       this.$http.get(baseURI)
       .then((response) => {
         console.log(response.data);
