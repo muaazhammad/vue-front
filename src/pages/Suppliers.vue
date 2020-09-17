@@ -14,10 +14,34 @@
               <router-link to="suppliers/create" tag="button" class="btn btn-primary btn-fill">Add Supplier</router-link>
 
             </template>
-            <l-table class="table-hover table-striped"
+            <!-- <l-table class="table-hover table-striped"
                      :columns="table1.columns"
                      :data="table1.data">
-            </l-table>
+            </l-table> -->
+<table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <Supplier 
+                v-for="supplier in tableData" 
+                :key="supplier" 
+                :data="supplier"   
+               @idToDelete="onDelete" 
+                @productToEdit="onEdit"
+               
+                ></Supplier>
+              
+              </tbody>
+            </table>
+
+
           </card>
 
         </div>
@@ -29,53 +53,54 @@
 <script>
   import LTable from 'src/components/Table.vue'
   import Card from 'src/components/Cards/Card.vue'
-  const tableColumns = ['Id', 'Name', 'phone', 'add_by', 'products']
-  const tableData = [{
-    id: 1,
-    name: 'Dakota Rice',
-    phone: '123456789',
-    add_by: 'Niger',
-    products: 'Oud Turnhout'
-  },
-  {
-    id: 2,
-    name: 'Minerva Hooper',
-    phone: '123456789',
-    add_by: 'Curaçao',
-    products: 'Sinaai Waas'
-  },
-  {
-    id: 3,
-    name: 'Sage Rodriguez',
-    phone: '123456789',
-    add_by: 'Netherlands',
-    products: 'Baileux'
-  },
-  {
-    id: 4,
-    name: 'Philip Chaney',
-    phone: '123456789',
-    add_by: 'Korea',
-    products: 'Overland Park'
-  },
-  ]
+  import Supplier from "./Supplier.vue";
+ import axios from 'axios';
+  
   export default {
     components: {
       LTable,
-      Card
+      Card,
+      Supplier
     },
     data () {
       return {
-        table1: {
-          columns: [...tableColumns],
-          data: [...tableData]
-        },
-        table2: {
-          columns: [...tableColumns],
-          data: [...tableData]
-        }
+        tableData:[],
+       
       }
-    }
+    },
+      methods: {
+    getSuppliers() {
+      //implement axios to get customers
+      const baseURI = "http://127.0.0.1:8000/api/suppliers";
+        axios.get(baseURI).then((response) => {
+        console.log(response.data);
+        this.tableData = response.data;
+        console.log(this.tableData);
+      });
+    },
+
+      onDelete(e) {
+      //implement axios to delete product
+      const baseURI = "http://127.0.0.1:8000/api/suppliers/"+e;
+      axios.delete(baseURI)
+      .then((response) => {
+      this.getSuppliers();
+      console.log(response);
+      // this.$router.push('/admin/products');
+
+      });
+    },
+
+    // onEdit(e){
+    //   alert(e);
+    // }
+  },
+  created() {
+    //call getproducts here
+    this.getSuppliers();
+  },
+
+
   }
 </script>
 <style>

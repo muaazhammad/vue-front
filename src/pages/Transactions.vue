@@ -5,33 +5,37 @@
         <div class="col-12">
           <card class="strpied-tabled-with-hover" body-classes="table-full-width table-responsive">
             <template slot="header">
-              <h4 class="card-title">All Billing Months</h4>
-              <p class="card-category">you can add more Billing Months</p>
+              <h4 class="card-title">All Transactions</h4>
+              <p class="card-category">you can add more Transactions</p>
 
               <router-link
-                to="months/create"
+                to="transactions/create"
                 tag="button"
                 class="btn btn-primary btn-fill"
-              >Add Month</router-link>
+              >Add Transaction</router-link>
             </template>
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Start Date</th>
-                  <th scope="col">End Date</th>
-                  <th scope="col">Actions</th>
+                  <th scope="col">user-id</th>
+                  <th scope="col">product-id</th>
+                  <th scope="col">Supplier-id</th>
+                  <th scope="col">month-id</th>
+                  <th scope="col">date</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">price</th>
+
                 </tr>
               </thead>
               <tbody>
-                <Month
-                  v-for="month in tableData"
-                  :key="month"
-                  :data="month"
+                <Transaction
+                  v-for="transaction in tableData"
+                  :key="transaction"
+                  :data="transaction"
                   @idToDelete="onDelete"
                   @productToEdit="onEdit"
-                ></Month>
+                ></Transaction>
               </tbody>
             </table>
           </card>
@@ -43,14 +47,14 @@
 <script>
 import LTable from "src/components/Table.vue";
 import Card from "src/components/Cards/Card.vue";
-import Month from "./Month.vue";
+import Transaction from "./Transaction.vue";
 import axios from "axios";
 
 export default {
   components: {
     LTable,
     Card,
-    Month,
+    Transaction,
   },
   data() {
     return {
@@ -60,9 +64,8 @@ export default {
   methods:{
     getmonths() {
       //implement axios to get customers
-      const baseURI = "http://127.0.0.1:8000/api/months";
+      const baseURI = "http://127.0.0.1:8000/api/transactions";
         axios.get(baseURI).then((response) => {
-            console.log('llllllllllllllllllllllllllllllll');
         console.log(response.data);
         this.tableData = response.data;
       });
@@ -70,7 +73,7 @@ export default {
 
       onDelete(e) {
       //implement axios to delete product
-      const baseURI = "http://127.0.0.1:8000/api/months/"+e;
+      const baseURI = "http://127.0.0.1:8000/api/transactions/"+e;
       axios.delete(baseURI)
       .then((response) => {
       this.getmonths();

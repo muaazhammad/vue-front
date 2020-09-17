@@ -21,12 +21,18 @@
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
-                  <th scope="col">Supplier</th>
+                  <th scope="col">Supplier-id</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <Product v-for="product in tableData" :key="product" :data="product" @idToDelete="onDelete" ></Product>
+                <Product 
+                v-for="product in tableData" 
+                :key="product" 
+                :data="product"   
+                @idToDelete="onDelete" 
+                @productToEdit="onEdit"
+                ></Product>
               </tbody>
             </table>
           </card>
@@ -75,6 +81,10 @@ export default {
 
       });
     },
+
+    // onEdit(e){
+    //   alert(e);
+    // }
   },
   created() {
     //call getproducts here

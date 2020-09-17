@@ -22,6 +22,10 @@
         <i class="nc-icon nc-paper-2"></i>
         <p>Billing Months</p>
       </sidebar-link>
+       <sidebar-link to="/admin/transactions">
+        <i class="nc-icon nc-paper-2"></i>
+        <p>Transactions</p>
+      </sidebar-link>
      
      
     </side-bar>

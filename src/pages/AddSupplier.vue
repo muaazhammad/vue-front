@@ -15,28 +15,14 @@
           <base-input type="text"
                     label="Phone"
                     placeholder="phone"
-                    v-model="supplier.phone">
+                    v-model="supplier.phone_number">
           </base-input>
         </div>
       </div>
-        <div class="row">
-        <div class="col-md-8">
-          <base-input type="text"
-                    label=" Products"
-                    placeholder=" milk,eggs,bread etc"
-                    v-model="supplier.products">
-          </base-input>
-        </div>
-     
-      </div>
-
-
-
-
-
+      
 
       <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="updateProfile">
+        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="addSupplier">
           Add Supplier
         </button>
       </div>
@@ -55,20 +41,23 @@
     data () {
       return {
         supplier: {
-          name: '',
-          phone: '',
-          products: '',
+          name: 'hghg',
+          phone_number: '765765',
+          user_id: '1',
       
         }
       }
     },
     methods: {
-      updateProfile () {
+      addSupplier () {
       //  alert('Your data: ' + JSON.stringify(this.supplier));
-      const baseURI = 'http://127.0.0.1:8000/api/products';
-      this.$http.get(baseURI)
+      const baseURI = 'http://127.0.0.1:8000/api/suppliers';
+      this.$http.post(baseURI,this.supplier)
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
+
+        this.$router.push('/admin/suppliers');
+
       });
     },
   }

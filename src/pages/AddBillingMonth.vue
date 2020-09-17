@@ -1,44 +1,42 @@
 <template>
   <card>
-    <h4 slot="header" class="card-title">Add new Month</h4>
+    <h4 slot="header" class="card-title">Start New Billing Month</h4>
     <form>
-
       <div class="row">
         <div class="col-md-8">
-          <base-input type="text"
-                    label=" Name"
-                    placeholder=" Name"
-                    v-model="supplier.name">
-          </base-input>
+          <base-input type="text" label=" Name" placeholder=" Name" v-model="Month.name"></base-input>
         </div>
-        <div class="col-md-8">
-          <base-input type="text"
-                    label="Phone"
-                    placeholder="phone"
-                    v-model="supplier.phone">
-          </base-input>
+
+         <div class="col-md-8">
+          <base-input type="date" label=" Start Date" placeholder=" Name" v-model="Month.start_date"></base-input>
         </div>
+         <div class="col-md-8">
+          <base-input type="date" label=" End Date" placeholder=" Name" v-model="Month.end_date"></base-input>
+        </div>
+
+
+
+
+        <!-- <div class="col-md-8"> -->
+       <!-- <label for="start_date">Start Date</label> -->
+         <!-- <Datepicker   v-model="Month.start_dat" type="date" format="YYYY-MM-DD"></Datepicker> -->
+          <!-- <base-input type="text" label="kj" placeholder="price" v-model="Product.price"></base-input> -->
+        <!-- </div> -->
+
+          <!-- <div class="col-md-8"> -->
+       <!-- <label for="start_date">End Date</label> -->
+         <!-- <Datepicker  v-model="Month.end_dat"></Datepicker> -->
+          <!-- <base-input type="text" label="kj" placeholder="price" v-model="Product.price"></base-input> -->
+        <!-- </div> -->
       </div>
-        <div class="row">
-        <div class="col-md-8">
-          <base-input type="text"
-                    label=" Products"
-                    placeholder=" milk,eggs,bread etc"
-                    v-model="supplier.products">
-          </base-input>
-        </div>
      
-      </div>
-
-
-
-
-
 
       <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="addMonth">
-          Add Month
-        </button>
+        <button
+          type="submit"
+          class="btn btn-info btn-fill float-right"
+          @click.prevent="addMonth"
+        >Add Month</button>
       </div>
       <div class="clearfix"></div>
     </form>
@@ -47,41 +45,53 @@
 
 
 <script>
-  
-  export default {
-    components: {
 
+// import Datepicker from 'vuejs-datepicker';
+  import Datepicker from 'vue2-datepicker';
+  import 'vue2-datepicker/index.css';
+
+ import axios from 'axios';
+export default {
+  components: {
+    Datepicker
+  },
+  data() {
+    return {
+    
+      Month: {
+        name: "",
+        start_date: "",
+        end_date: "",
+        user_id: "2",
+      },
+    };
+  },
+  methods: {
+     customFormatter(date) {
+      return moment(date).format('YYYY MM DD');
     },
-    data () {
-      return {
-        supplier: {
-          name: '',
-          phone: '',
-          products: '',
-      
-        }
-      }
+    addMonth() {
+       alert('Your data: ' + JSON.stringify(this.Month));
+      const baseURI = "http://127.0.0.1:8000/api/months";
+      axios.post(baseURI, this.Month)
+      .then((response) => {
+      console.log(response);
+      this.$router.push("/admin/months");
+      });
+     
     },
-    methods: {
-      addMonth () {
-    alert('Your data: ' + JSON.stringify(this.supplier));
-    //  const baseURI = 'https://jsonplaceholder.typicode.com/users';
-    //   this.$http.get(baseURI)
-    //   .then((result) => {
-    //     console.log(result);
+    // getSuppliers() {
+    //   const baseURI = "http://127.0.0.1:8000/api/suppliers";
+    //   this.$http.get(baseURI).then((response) => {
+    //     console.log(response);
+    //     this.suppliers = response.data;
     //   });
-
-//   axios.post("https://ledgerapp-73bf7.firebaseio.com/suppliers", name=this.supplier.name)
-//     .then(response => console.log(response))
-//     .catch(error => {
-//       this.errorMessage = error.message;
-//       console.error("There was an error!", error);
-//     });
-    },
-  }
-  }
-
+    // },
+  },
+  created() {
+    // this.getSuppliers();
+  },
+};
 </script>
 <style>
-
 </style>
