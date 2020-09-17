@@ -14,6 +14,7 @@ import Home from 'src/pages/Home.vue'
 import AddProduct from 'src/pages/AddProduct.vue'
 import BillingMonths from 'src/pages/BillingMonths.vue'
 import AddBillingMonth from 'src/pages/AddBillingMonth.vue'
+import TransactionByMonth from 'src/pages/TransactionByMonth.vue'
 import Transactions from 'src/pages/Transactions.vue'
 import Addtransaction from 'src/pages/AddTransaction.vue'
 import Icons from 'src/pages/Icons.vue'
@@ -89,6 +90,11 @@ const routes = [
         path: 'months/create',
         name: 'months/create',
         component: AddBillingMonth
+      },
+      {
+        path: 'months/details/:id',
+        name: 'months/details',
+        component: TransactionByMonth
       },
       {
         path: 'transactions',

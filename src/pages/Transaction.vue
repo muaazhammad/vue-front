@@ -1,13 +1,12 @@
 <template>
   <tr>
     <td scope="row">{{data.id}}</td>
-    <td>{{data.user_id}}</td>
-    <td>{{data.product_id}}</td>
-    <td>{{data.supplier_id}}</td>
-    <td>{{data.month_id}}</td>
+    <td>{{data.product}}</td>
+    <td>{{data.supplier}}</td>
+    <td>{{data.month}}</td>
     <td>{{data.date}}</td>
     <td>{{data.quantity}}</td>
-     <td>{{data.price}}</td>
+    <td>{{data.price}}</td>
     <td>
       <button @click="onDelete">delete</button> &nbsp;
       <button @click="onEdit">Edit</button>

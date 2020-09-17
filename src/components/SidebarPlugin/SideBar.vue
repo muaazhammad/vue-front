@@ -94,10 +94,11 @@
   .sidebar .sidebar-wrapper {
     display: flex;
     flex-direction: column;
+    background: rgb(28, 146, 126);
   }
  .sidebar .nav-main__links {
    flex: 1;
- }
+ }  
  .sidebar .sidebar-wrapper .logo .logo__container {
    padding-left: 10px;
  }

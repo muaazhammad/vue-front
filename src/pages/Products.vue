@@ -21,7 +21,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
-                  <th scope="col">Supplier-id</th>
+                  <th scope="col">Supplier name</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>

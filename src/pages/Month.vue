@@ -5,10 +5,10 @@
     <td>{{data.start_date}}</td>
     <td>{{data.end_date}}</td>
     <td>
-            <button @click="onEdit">Details</button>
+          <router-link  :to="{path: 'months/details/'+data.id}"  tag="button" class="btn btn-primary btn-fill">Details</router-link><br><br>
         <button @click="onDelete">delete</button> &nbsp;
         <button @click="onEdit">Edit</button>
-     
+   
     </td>
   </tr>
 </template>

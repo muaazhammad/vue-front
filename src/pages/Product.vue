@@ -3,7 +3,7 @@
     <td scope="row">{{data.id}}</td>
     <td>{{data.name}}</td>
     <td>{{data.price}}</td>
-    <td>{{data.supplier_id}}</td>
+    <td>{{data.supplier}}</td>
     <td>
         <button @click="onDelete">delete</button> &nbsp;
         <button @click="onEdit">Edit</button>

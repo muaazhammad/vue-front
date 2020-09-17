@@ -62,7 +62,6 @@ export default {
       //implement axios to get customers
       const baseURI = "http://127.0.0.1:8000/api/months";
         axios.get(baseURI).then((response) => {
-            console.log('llllllllllllllllllllllllllllllll');
         console.log(response.data);
         this.tableData = response.data;
       });

@@ -18,13 +18,13 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">user-id</th>
-                  <th scope="col">product-id</th>
-                  <th scope="col">Supplier-id</th>
-                  <th scope="col">month-id</th>
-                  <th scope="col">date</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Supplier</th>
+                  <th scope="col">Billing Month</th>
+                  <th scope="col">Date</th>
                   <th scope="col">Quantity</th>
-                  <th scope="col">price</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Actions</th>
 
                 </tr>
               </thead>
