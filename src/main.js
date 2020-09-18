@@ -18,8 +18,12 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import axios from 'axios'
 
+// import VueLocalForage from 'vue-localforage'
+// Vue.use(VueLocalForage)
+
 //?
 Vue.prototype.$http = axios
+axios.defaults.headers.common = {'Authorization':'Bearer '+localStorage.auth}  //not asinc 
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
@@ -45,6 +49,36 @@ const router = new VueRouter({
     }
   }
 })
+
+// router.beforeEach((to, from, next) => {
+//   if (!localStorage.isAuthenticated) {
+//       next({
+//           path: '/login',
+//           query: { redirect: to.fullPath }
+//       })
+//   } else {
+//       next()
+//   }
+// });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.dashboardRoutes)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!localStorage.auth) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
+})
+
+
 
 /* eslint-disable no-new */
 new Vue({

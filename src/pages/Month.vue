@@ -5,9 +5,9 @@
     <td>{{data.start_date}}</td>
     <td>{{data.end_date}}</td>
     <td>
-          <router-link  :to="{path: 'months/details/'+data.id}"  tag="button" class="btn btn-primary btn-fill">Details</router-link><br><br>
-        <button @click="onDelete">delete</button> &nbsp;
-        <button @click="onEdit">Edit</button>
+          <router-link  :to="{path: 'months/details/'+data.id}"  tag="button" class="btn btn-primary">Details</router-link>&nbsp;
+        <button  class="btn btn-danger" @click="onDelete">delete</button> &nbsp;
+        <button  class="btn btn-secondary" @click="onEdit">Edit</button>
    
     </td>
   </tr>

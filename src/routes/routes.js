@@ -10,6 +10,7 @@ import AddSupplier from 'src/pages/AddSupplier.vue'
 import Products from 'src/pages/Products.vue'
 import Login from 'src/pages/Login.vue'
 import Signup from 'src/pages/Signup.vue'
+import Logout from 'src/pages/Logout.vue'
 import Home from 'src/pages/Home.vue'
 import AddProduct from 'src/pages/AddProduct.vue'
 import BillingMonths from 'src/pages/BillingMonths.vue'
@@ -36,21 +37,25 @@ const routes = [
     // redirect: '/admin/overview'
   },
   {
-    path: '/home',
+    path: '/',
     name:'home',
     component: Home,
     // redirect: '/admin/overview'
   },
-  {
-    path: '/',
-    component: DashboardLayout,
-    redirect: '/admin/overview'
-  },
+ 
   {
     path: '/admin',
     component: DashboardLayout,
+    meta:{dashboardRoutes:true},
     redirect: '/admin/overview',
+    
     children: [
+      // {
+        // path: 'logout',
+        // name:'logout',
+        // component: Logout,
+        // redirect: '/admin/overview'
+      // },
       {
         path: 'overview',
         name: 'Overview',

@@ -6,8 +6,8 @@
     <td>{{data.name}}</td>
     <td>{{data.phone_number}}</td>
     <td>
-        <button @click="onDelete">delete</button> &nbsp;
-        <button @click="onEdit">Edit</button>
+        <button class="btn btn-danger" @click="onDelete">delete</button> &nbsp;
+        <button class="btn btn-secondary" @click="onEdit">Edit</button>
      
     </td>
   </tr>

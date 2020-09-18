@@ -5,14 +5,13 @@
         <div class="col-12">
           <card class="strpied-tabled-with-hover" body-classes="table-full-width table-responsive">
             <template slot="header">
-              <h4 class="card-title">All Transactions</h4>
-              <p class="card-category">you can add more Transactions</p>
-
-              <router-link
+              <h4 class="card-title">Transactions by Month</h4>
+            
+              <!-- <router-link
                 to="transactions/create"
                 tag="button"
                 class="btn btn-primary btn-fill"
-              >Add Transaction</router-link>
+              >Add Transaction</router-link> -->
             </template>
             <table class="table table-striped">
               <thead>
@@ -39,7 +38,7 @@
               </tbody>
             </table>
           </card>
-          <h3>Total :</h3>
+          <h3>Total of the Month : <span style="color:red">{{total}}</span>  PKR</h3>
         </div>
       </div>
     </div>
@@ -61,6 +60,7 @@ export default {
     return {
       tableData:[],
       currentMonth:this.$route.params.id,
+      total:'',
     };
   },
   methods:{
@@ -70,6 +70,14 @@ export default {
         axios.get(baseURI).then((response) => {
         console.log(response.data);
         this.tableData = response.data;
+      });
+    },
+     getMonthTotal() {
+      //implement axios to get customers
+      const baseURI = "http://127.0.0.1:8000/api/totalbymonth/"+this.currentMonth;
+        axios.get(baseURI).then((response) => {
+        console.log(response.data);
+        this.total = response.data;
       });
     },
 
@@ -88,6 +96,7 @@ export default {
   created() {
     //call getproducts here
     this.getTransactionsByMonth();
+    this.getMonthTotal();
   },
 };
 </script>

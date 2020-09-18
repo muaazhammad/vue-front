@@ -1,16 +1,14 @@
 <template>
   <card>
     
-    <h4 slot="header" class="card-title">Edit Profile</h4>
-    <form>
-
-
+    <h3 slot="header" class="card-title">User Details</h3>
+    <!-- <form>
       <div class="row">
         <div class="col-md-6">
           <base-input type="text"
                     label="First Name"
                     placeholder="First Name"
-                    v-model="user.firstName">
+                    v-model="user.name">
           </base-input>
         </div>
       
@@ -21,7 +19,7 @@
           <base-input type="text"
                     label="Email"
                     placeholder="Hemail"
-                    v-model="user.address">
+                    v-model="user.email">
           </base-input>
         </div>
       </div>
@@ -33,12 +31,17 @@
         </button>
       </div>
       <div class="clearfix"></div>
-    </form>
+    </form> -->
+     
+     <h4>Name : {{user.name}}</h4>
+     <h4>Email : {{user.email}}</h4>
+     
      </card>
  
 </template>
 <script>
   import Card from 'src/components/Cards/Card.vue'
+   import axios from 'axios';
 
   export default {
     components: {
@@ -47,24 +50,30 @@
     data () {
       return {
         user: {
-          company: 'Light dashboard',
-          username: 'michael23',
+          name: '',
           email: '',
-          firstName: 'Mike',
-          lastName: 'Andrew',
-          address: 'Melbourne, Australia',
-          city: 'melbourne',
-          country: 'Australia',
-          postalCode: '',
-          aboutMe: `Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.`
         }
       }
     },
     methods: {
+      getuser() {
+      //implement axios to get customers
+      const baseURI = "http://127.0.0.1:8000/api/user";
+        axios.get(baseURI).then((response) => {
+        console.log(response.data.user.name);
+        this.user.name = response.data.user.name;
+         this.user.email = response.data.user.email;
+      });
+    },
+
       updateProfile () {
         alert('Your data: ' + JSON.stringify(this.user))
       }
-    }
+    },
+     created() {
+    this.getuser();
+   
+  },
   }
 
 </script>

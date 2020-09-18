@@ -82,7 +82,7 @@
           type="submit"
           class="btn btn-info btn-fill float-right"
           @click.prevent="addMonth"
-        >Add Month</button>
+        >Add Transaction</button>
       </div>
       <div class="clearfix"></div>
     </form>
@@ -107,7 +107,7 @@ export default {
       billingMonths: [],
 
       transaction: {
-        user_id: "1",
+        user_id: "",
         product_id: "",
         supplier_id: "",
         month_id: "",

@@ -1,63 +1,18 @@
 <template>
-<body>
-    
-
-<div class="container body">
-<div class="login-form">
-	<h2 class="text-center">Signup</h2>
-    <form action="/examples/actions/confirmation.php" method="post">
-		<div class="avatar">
-              <router-link to="home" ><img src="https://www.nextbridge.pk/wp-content/uploads/2016/05/NB-logo-for-NB-website.png" alt=""></router-link>
-			
-		</div>           
-        <div class="form-group">
-        	<input type="text" class="form-control input-lg" name="name" placeholder="name" required="required" v-model="User.name">
-        </div>
-
-         <div class="form-group">
-        	<input type="text" class="form-control input-lg" name="email" placeholder="email" required="required" v-model="User.email">
-        </div>
-
-		<div class="form-group">
-            <input type="password" class="form-control input-lg" name="password" placeholder="Password" required="required" v-model="User.password">
-        </div>        
-
-        	<!-- <div class="form-group">
-            <input type="password" class="form-control input-lg" name="conferm_password" placeholder="Conferm Password" required="required">
-        </div>  -->
-  <div class="form-group">
-          <button
-          type="submit"
-          class="btn btn-info btn-fill float-right"
-          @click.prevent="signup"
-        >Sign up</button>
-        </div>
-		<p class="hint-text">Already signup   <router-link to="login" >Login</router-link></p>
-   
-    </form>
-  
+<div>
+<h3>you are successfully logout.</h3>
+<p>go to home page</p>
 </div>
-</div>
-
-</body>
-
-
-
 </template>
 
-
-
-
 <script>
-  
   export default {
-
 
 	   data() {
     return {
     
       User: {
-		  name:null,
+		  name:'',
         email: "",
 		password: "",
 		
@@ -67,21 +22,27 @@
   },
 
   methods: {
-    signup() {
+    logout() {
     //    alert('Your data: ' + JSON.stringify(this.User));
-      const baseURI = "http://127.0.0.1:8000/api/register";
+      const baseURI = "http://127.0.0.1:8000/api/logout";
 	  this.$http.post(baseURI, this.User)
 	  .then((response) => {
+	//   const token = response.data.token;
+	//   $setItem('auth',token);
+		//   localStorage.setItem('auth',token);
+		   localStorage.setItem('isAuthenticated','false');
+		//   alert(localStorage.auth);
+		//   alert($getItem('auth'));
 		console.log(response.data);
-		this.$router.push("/login");
+		// this.$router.push("/login");
 		// this.$router.go();
-	  })
-	  .catch(err => {
-    // what now?
-    console.log('gggggggggggggggge'+rr);
-}); 
+      });
     },
   },
+
+  created (){
+      this.logout();
+  }
    
   }
 
