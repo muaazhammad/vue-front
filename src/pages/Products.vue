@@ -77,6 +77,10 @@ export default {
       this.getProducts();
       console.log(response);
       // this.$router.push('/admin/products');
+      })
+      .catch((error)=>{
+
+         alert('You cannot delete a product which has transactions');
 
       });
     },

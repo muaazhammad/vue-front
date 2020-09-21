@@ -7,7 +7,7 @@
     <td>
           <router-link  :to="{path: 'months/details/'+data.id}"  tag="button" class="btn btn-primary">Details</router-link>&nbsp;
         <button  class="btn btn-danger" @click="onDelete">delete</button> &nbsp;
-        <button  class="btn btn-secondary" @click="onEdit">Edit</button>
+        <!-- <button  class="btn btn-secondary" @click="onEdit">Edit</button> -->
    
     </td>
   </tr>
