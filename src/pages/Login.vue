@@ -3,7 +3,7 @@
   <div class="container body">
     <div class="login-form">
       <h2 class="text-center">Login</h2>
-      <form >
+      <form>
         <div class="avatar">
           <router-link to="home">
             <img
@@ -13,7 +13,14 @@
           </router-link>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control input-lg" name="email" placeholder="email" required="required" v-model="User.email"/>
+          <input
+            type="text"
+            class="form-control input-lg"
+            name="email"
+            placeholder="email"
+            required="required"
+            v-model="User.email"
+          />
         </div>
         <div class="form-group">
           <input
@@ -22,15 +29,15 @@
             name="password"
             placeholder="Password"
             required="required"
-		    v-model="User.password"
+            v-model="User.password"
           />
         </div>
         <div class="form-group">
           <button
-          type="submit"
-          class="btn btn-info btn-fill float-right"
-          @click.prevent="signin"
-        >Sign in</button>
+            type="submit"
+            class="btn btn-info btn-fill float-right"
+            @click.prevent="signin"
+          >Sign in</button>
         </div>
         <p class="hint-text">
           Already signup
@@ -42,45 +49,32 @@
 </body>
 </template>
 
-
-
-
 <script>
 export default {
   data() {
     return {
-    
       User: {
         email: "",
-		password: "",
-		
-
+        password: "",
       },
     };
   },
 
   methods: {
     signin() {
-    //    alert('Your data: ' + JSON.stringify(this.User));
+      //    alert('Your data: ' + JSON.stringify(this.User));
       const baseURI = "http://127.0.0.1:8000/api/login";
-	  this.$http.post(baseURI, this.User)
-	  .then((response) => {
-    const token = response.data.token;
-    const userId = response.data.user.id;
-	//   $setItem('auth',token);
-      localStorage.setItem('auth',token);
-      localStorage.setItem('id',userId);
-		//    localStorage.setItem('isAuthenticated','true');
-		  // alert(localStorage.auth);
-		//   alert($getItem('auth'));
-		console.log(response.data);
-		this.$router.push("/admin/overview");
-		// this.$router.go();
+      this.$http.post(baseURI, this.User).then((response) => {
+        const token = response.data.token;
+        const userId = response.data.user.id;
+        localStorage.setItem("auth", token);
+        localStorage.setItem("id", userId);
+        this.$router.push("/admin/overview");
+        this.$router.go();
       });
     },
   },
 };
-
 </script>
 
 

@@ -7,6 +7,7 @@ import Overview from 'src/pages/Overview.vue'
 import UserProfile from 'src/pages/UserProfile.vue'
 import Suppliers from 'src/pages/Suppliers.vue'
 import AddSupplier from 'src/pages/AddSupplier.vue'
+import EditSupplier from 'src/pages/EditSupplier.vue'
 import Products from 'src/pages/Products.vue'
 import Login from 'src/pages/Login.vue'
 import Signup from 'src/pages/Signup.vue'
@@ -75,6 +76,11 @@ const routes = [
         path: 'suppliers/create',
         name: 'create',
         component: AddSupplier
+      },
+      {
+        path: 'suppliers/edit/:id',
+        name: 'suppliers/edit',
+        component: EditSupplier
       },
       {
         path: 'products',
