@@ -19,6 +19,7 @@ import AddBillingMonth from 'src/pages/AddBillingMonth.vue'
 import TransactionByMonth from 'src/pages/TransactionByMonth.vue'
 import Transactions from 'src/pages/Transactions.vue'
 import Addtransaction from 'src/pages/AddTransaction.vue'
+import EditTransaction from 'src/pages/EditTransaction.vue'
 import Icons from 'src/pages/Icons.vue'
 import Maps from 'src/pages/Maps.vue'
 import Notifications from 'src/pages/Notifications.vue'
@@ -116,6 +117,11 @@ const routes = [
         path: 'transactions/create',
         name: 'transactions/create',
         component: Addtransaction
+      },
+      {
+        path: 'transactions/edit/:id',
+        name: 'transactions/edit',
+        component: EditTransaction
       },
       {
         path: 'icons',

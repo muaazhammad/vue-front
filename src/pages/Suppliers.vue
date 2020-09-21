@@ -76,6 +76,12 @@
         console.log(response.data);
         this.tableData = response.data;
         console.log(this.tableData);
+      })
+      .catch((error)=>{
+
+        if(error.response.status===422){
+                  alert('fdfdf')
+                }
       });
     },
 

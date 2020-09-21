@@ -40,8 +40,8 @@
           >Sign in</button>
         </div>
         <p class="hint-text">
-          Already signup
-          <router-link to="login">Login</router-link>
+          Not signup yet ? 
+          <router-link to="signup">Signup</router-link>
         </p>
       </form>
     </div>

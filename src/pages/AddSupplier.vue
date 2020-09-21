@@ -4,10 +4,10 @@
     <form>
       <div class="row">
         <div class="col-md-8">
-          <base-input type="text" label=" Name" placeholder=" Name" v-model="supplier.name"></base-input>
+          <base-input type="text" label=" Name" placeholder=" Name" v-model="supplier.name" required></base-input>
         </div>
         <div class="col-md-8">
-          <base-input type="text" label="Phone" placeholder="phone" v-model="supplier.phone_number"></base-input>
+          <base-input type="text" label="Phone" placeholder="phone" v-model="supplier.phone_number" required></base-input>
         </div>
       </div>
 
