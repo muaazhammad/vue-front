@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     addSupplier() {
-      const baseURI = "http://127.0.0.1:8000/api/suppliers";
+      const baseURI = "api/suppliers";
       this.$http.post(baseURI, this.supplier).then((response) => {
         console.log(response);
         this.$router.push("/admin/suppliers");

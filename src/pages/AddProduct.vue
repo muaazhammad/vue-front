@@ -59,7 +59,7 @@ export default {
   methods: {
     addProduct() {
       //  alert('Your data: ' + JSON.stringify(this.supplier));
-      const baseURI = "http://127.0.0.1:8000/api/products";
+      const baseURI = "api/products";
       this.$http.post(baseURI, this.Product).then((response) => {
         console.log(response);
 
@@ -67,7 +67,7 @@ export default {
       });
     },
     getSuppliers() {
-      const baseURI = "http://127.0.0.1:8000/api/suppliers";
+      const baseURI = "api/suppliers";
       this.$http.get(baseURI).then((response) => {
         console.log(response);
         this.suppliers = response.data;

@@ -66,7 +66,7 @@ export default {
   methods:{
     getTransactionsByMonth() {
       //implement axios to get customers
-      const baseURI = "http://127.0.0.1:8000/api/transactionsbymonth/"+this.currentMonth;
+      const baseURI = "api/transactionsbymonth/"+this.currentMonth;
         axios.get(baseURI).then((response) => {
         console.log(response.data);
         this.tableData = response.data;
@@ -74,7 +74,7 @@ export default {
     },
      getMonthTotal() {
       //implement axios to get customers
-      const baseURI = "http://127.0.0.1:8000/api/totalbymonth/"+this.currentMonth;
+      const baseURI = "api/totalbymonth/"+this.currentMonth;
         axios.get(baseURI).then((response) => {
         console.log(response.data);
         this.total = response.data;
@@ -83,7 +83,7 @@ export default {
 
       onDelete(e) {
       //implement axios to delete product
-      const baseURI = "http://127.0.0.1:8000/api/transactions/"+e;
+      const baseURI = "api/transactions/"+e;
       axios.delete(baseURI)
       .then((response) => {
       this.getmonths();

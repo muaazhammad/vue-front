@@ -69,7 +69,7 @@
   methods: {
     signup() {
     //    alert('Your data: ' + JSON.stringify(this.User));
-      const baseURI = "http://127.0.0.1:8000/api/register";
+      const baseURI = "api/register";
 	  this.$http.post(baseURI, this.User)
 	  .then((response) => {
 		console.log(response.data);
@@ -78,7 +78,7 @@
 	  })
 	  .catch(err => {
     // what now?
-    console.log('gggggggggggggggge'+rr);
+
 }); 
     },
   },

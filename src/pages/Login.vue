@@ -63,7 +63,7 @@ export default {
   methods: {
     signin() {
       //    alert('Your data: ' + JSON.stringify(this.User));
-      const baseURI = "http://127.0.0.1:8000/api/login";
+      const baseURI = "api/login";
       this.$http.post(baseURI, this.User).then((response) => {
         const token = response.data.token;
         const userId = response.data.user.id;

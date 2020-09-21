@@ -58,7 +58,7 @@
     methods: {
       getuser() {
       //implement axios to get customers
-      const baseURI = "http://127.0.0.1:8000/api/user";
+      const baseURI = "api/user";
         axios.get(baseURI).then((response) => {
         console.log(response.data.user.name);
         this.user.name = response.data.user.name;

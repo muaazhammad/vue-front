@@ -53,7 +53,7 @@
     methods: {
         getSupplier() {
       //implement axios to get customers
-      const baseURI = "http://127.0.0.1:8000/api/suppliers/"+this.currentSupplierId;
+      const baseURI = "api/suppliers/"+this.currentSupplierId;
         axios.get(baseURI).then((response) => {
        this.tableData = response.data;
        console.log(response.data);
@@ -65,7 +65,7 @@
       updateSupplier () {
        alert('Your data: ' + JSON.stringify(this.supplier));
         let datainJSON = JSON.stringify(this.supplier);
-      const baseURI = 'http://127.0.0.1:8000/api/suppliers/'+this.currentSupplierId;
+      const baseURI = 'api/suppliers/'+this.currentSupplierId;
       this.$http.put(baseURI,datainJSON ,{
         headers: {
             'Content-Type': 'application/json',

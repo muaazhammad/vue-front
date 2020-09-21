@@ -72,7 +72,7 @@ export default {
     },
     addMonth() {
       //  alert('Your data: ' + JSON.stringify(this.Month));
-      const baseURI = "http://127.0.0.1:8000/api/months";
+      const baseURI = "api/months";
       axios.post(baseURI, this.Month)
       .then((response) => {
       console.log(response);

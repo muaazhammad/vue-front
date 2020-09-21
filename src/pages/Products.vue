@@ -63,7 +63,7 @@ export default {
   methods: {
     getProducts() {
       //implement axios to get customers
-      const baseURI = "http://127.0.0.1:8000/api/products";
+      const baseURI = "api/products";
         axios.get(baseURI).then((response) => {
         console.log(response.data);
         this.tableData = response.data;
@@ -71,7 +71,7 @@ export default {
     },
       onDelete(e) {
       //implement axios to delete product
-      const baseURI = "http://127.0.0.1:8000/api/products/"+e;
+      const baseURI = "api/products/"+e;
       axios.delete(baseURI)
       .then((response) => {
       this.getProducts();

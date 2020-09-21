@@ -71,7 +71,7 @@
       methods: {
     getSuppliers() {
       //implement axios to get customers
-      const baseURI = "http://127.0.0.1:8000/api/suppliers";
+      const baseURI = "api/suppliers";
         axios.get(baseURI).then((response) => {
         console.log(response.data);
         this.tableData = response.data;

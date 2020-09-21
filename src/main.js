@@ -24,6 +24,7 @@ import axios from 'axios'
 //?
 Vue.prototype.$http = axios
 axios.defaults.headers.common = {'Authorization':'Bearer '+localStorage.auth}  //not asinc 
+axios.defaults.baseURL = "http://10.28.86.195:8000/";
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
@@ -84,5 +85,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  baseURL:"http://127.0.0.1:8000/", 
 })

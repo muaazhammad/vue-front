@@ -24,7 +24,7 @@
   methods: {
     logout() {
     //    alert('Your data: ' + JSON.stringify(this.User));
-      const baseURI = "http://127.0.0.1:8000/api/logout";
+      const baseURI = "api/logout";
 	  this.$http.post(baseURI, this.User)
 	  .then((response) => {
 	//   const token = response.data.token;

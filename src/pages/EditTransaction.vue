@@ -58,7 +58,7 @@
         <div class="col-md-8">
           <base-input
             type="date"
-            label=" Start Date"
+            label=" Date"
             placeholder=" Name"
             v-model="transaction.date"
           ></base-input>
@@ -127,7 +127,7 @@ export default {
     getTransaction() {
       //implement axios to get customers
       const baseURI =
-        "http://127.0.0.1:8000/api/transactions/" + this.currentSupplierId;
+        "api/transactions/" + this.currentSupplierId;
       axios.get(baseURI).then((response) => {
         this.tableData = response.data;
         console.log(response.data);
@@ -143,7 +143,7 @@ export default {
     updateTransaction() {
       let datainJSON = JSON.stringify(this.transaction);
       const baseURI =
-        "http://127.0.0.1:8000/api/transactions/" + this.currentSupplierId;
+        "api/transactions/" + this.currentSupplierId;
       this.$http
         .put(baseURI, datainJSON, {
           headers: {
@@ -159,28 +159,28 @@ export default {
 
     addMonth() {
       // alert("Your data: " + JSON.stringify(this.transaction));
-      const baseURI = "http://127.0.0.1:8000/api/transactions";
+      const baseURI = "api/transactions";
       axios.post(baseURI, this.transaction).then((response) => {
         console.log(response);
         this.$router.push("/admin/transactions");
       });
     },
     getSuppliers() {
-      const baseURI = "http://127.0.0.1:8000/api/suppliers";
+      const baseURI = "api/suppliers";
       this.$http.get(baseURI).then((response) => {
         console.log(response);
         this.suppliers = response.data;
       });
     },
     getProducts() {
-      const baseURI = "http://127.0.0.1:8000/api/products";
+      const baseURI = "api/products";
       this.$http.get(baseURI).then((response) => {
         console.log(response);
         this.products = response.data;
       });
     },
     getMonths() {
-      const baseURI = "http://127.0.0.1:8000/api/months";
+      const baseURI = "api/months";
       this.$http.get(baseURI).then((response) => {
         console.log(response);
         this.billingMonths = response.data;
