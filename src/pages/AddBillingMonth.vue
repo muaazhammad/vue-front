@@ -62,7 +62,7 @@ export default {
         name: "",
         start_date: "",
         end_date: "",
-        user_id: "2",
+        user_id: "",
       },
     };
   },
@@ -71,7 +71,7 @@ export default {
       return moment(date).format('YYYY MM DD');
     },
     addMonth() {
-       alert('Your data: ' + JSON.stringify(this.Month));
+      //  alert('Your data: ' + JSON.stringify(this.Month));
       const baseURI = "http://127.0.0.1:8000/api/months";
       axios.post(baseURI, this.Month)
       .then((response) => {
@@ -90,6 +90,7 @@ export default {
   },
   created() {
     // this.getSuppliers();
+     this.Month.user_id=localStorage.id;
   },
 };
 </script>

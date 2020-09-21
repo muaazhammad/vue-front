@@ -46,12 +46,13 @@ export default {
   components: {},
   data() {
     return {
+      userid:'',
       suppliers: [],
       Product: {
-        name: "re",
-        price: "4",
-        supplier_id: "1",
-        user_id: "2",
+        name: "",
+        price: "",
+        supplier_id: "",
+        user_id: '',
       },
     };
   },
@@ -75,6 +76,7 @@ export default {
   },
   created() {
     this.getSuppliers();
+    this.Product.user_id=localStorage.id;
   },
 };
 </script>

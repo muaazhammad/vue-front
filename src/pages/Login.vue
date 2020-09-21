@@ -65,11 +65,13 @@ export default {
       const baseURI = "http://127.0.0.1:8000/api/login";
 	  this.$http.post(baseURI, this.User)
 	  .then((response) => {
-	  const token = response.data.token;
+    const token = response.data.token;
+    const userId = response.data.user.id;
 	//   $setItem('auth',token);
-		  localStorage.setItem('auth',token);
+      localStorage.setItem('auth',token);
+      localStorage.setItem('id',userId);
 		//    localStorage.setItem('isAuthenticated','true');
-		  alert(localStorage.auth);
+		  // alert(localStorage.auth);
 		//   alert($getItem('auth'));
 		console.log(response.data);
 		this.$router.push("/admin/overview");

@@ -123,7 +123,7 @@ export default {
     //   return moment(date).format('YYYY MM DD');
     // },
     addMonth() {
-      alert("Your data: " + JSON.stringify(this.transaction));
+      // alert("Your data: " + JSON.stringify(this.transaction));
       const baseURI = "http://127.0.0.1:8000/api/transactions";
       axios.post(baseURI, this.transaction).then((response) => {
         console.log(response);

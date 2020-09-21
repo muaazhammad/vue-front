@@ -43,7 +43,7 @@
         supplier: {
           name: 'hghg',
           phone_number: '765765',
-          user_id: '1',
+          user_id: '',
       
         }
       }
@@ -60,6 +60,9 @@
 
       });
     },
+  },
+  created(){
+       this.supplier.user_id=localStorage.id;
   }
   }
 
