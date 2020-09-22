@@ -8,7 +8,7 @@
     <td>{{data.quantity}}</td>
     <td>{{data.price}}</td>
     <td>
-      <router-link :to="{path:'transactions/edit/'+data.id}" tag="button" class="btn btn-primary">Edit</router-link>&nbsp;
+      <router-link :to="{path:'/admin/transactions/edit/'+data.id}" tag="button" class="btn btn-primary">Edit</router-link>&nbsp;
       <button class="btn btn-danger" @click="onDelete">delete</button> &nbsp;
 
     </td>

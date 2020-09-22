@@ -3,9 +3,9 @@
     <h4 slot="header" class="card-title">Add new Transaction</h4>
     <form>
       <div class="row">
-        <div class="col-md-8">
+        <!-- <div class="col-md-8">
           <base-input type="text" label=" user Name" placeholder=" Name" v-model="transaction.name"></base-input>
-        </div>
+        </div> -->
 
         <div class="form-group col-md-8">
           <label for="exampleFormControlSelect1">Select Supplier</label>

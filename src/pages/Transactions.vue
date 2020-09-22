@@ -72,7 +72,7 @@ export default {
     },
 
       onDelete(e) {
-      //implement axios to delete product
+       if (confirm("Are you sure?")) {
       const baseURI = "api/transactions/"+e;
       axios.delete(baseURI)
       .then((response) => {
@@ -81,6 +81,7 @@ export default {
       // this.$router.push('/admin/products');
 
       });
+  }
   }
   },
   created() {

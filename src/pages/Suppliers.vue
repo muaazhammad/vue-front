@@ -86,15 +86,17 @@
     },
 
       onDelete(e) {
-      //implement axios to delete product
-      const baseURI = "http://127.0.0.1:8000/api/suppliers/"+e;
-      axios.delete(baseURI)
-      .then((response) => {
-      this.getSuppliers();
-      console.log(response);
-      // this.$router.push('/admin/products');
+        if (confirm("It will also delete the related products and transactions. are you sure?")) 
+          {
+            const baseURI = "http://127.0.0.1:8000/api/suppliers/"+e;
+            axios.delete(baseURI)
+            .then((response) => {
+            this.getSuppliers();
+            console.log(response);
+            // this.$router.push('/admin/products');
 
-      });
+            });
+          }
     },
 
     // onEdit(e){

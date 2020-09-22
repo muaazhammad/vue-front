@@ -54,30 +54,29 @@ export default {
   },
   data() {
     return {
-      tableData:[],
+      tableData: [],
     };
   },
-  methods:{
+  methods: {
     getmonths() {
       //implement axios to get customers
       const baseURI = "api/months";
-        axios.get(baseURI).then((response) => {
+      axios.get(baseURI).then((response) => {
         console.log(response.data);
         this.tableData = response.data;
       });
     },
 
-      onDelete(e) {
-      //implement axios to delete product
-      const baseURI = "api/months/"+e;
-      axios.delete(baseURI)
-      .then((response) => {
-      this.getmonths();
-      console.log(response);
-      // this.$router.push('/admin/products');
-
-      });
-  }
+    onDelete(e) {
+      if (confirm("It will also delete the related transactions. are you sure?")) {
+        const baseURI = "api/months/" + e;
+        axios.delete(baseURI).then((response) => {
+          this.getmonths();
+          console.log(response);
+          // this.$router.push('/admin/products');
+        });
+      }
+    },
   },
   created() {
     //call getproducts here

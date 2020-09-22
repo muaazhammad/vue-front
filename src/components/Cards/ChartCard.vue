@@ -22,7 +22,7 @@
     props: {
       chartType: {
         type: String,
-        default: 'Line' // Line | Pie | Bar
+        default: 'Bar' // Line | Pie | Bar
       },
       chartOptions: {
         type: Object,
@@ -125,11 +125,14 @@
       }
     },
     async mounted () {
-      this.updateChartId()
-      const Chartist = await import('chartist')
-      this.$Chartist = Chartist.default || Chartist
-      this.initChart()
-    }
+     
+      this.updateChartId();
+      const Chartist = await import('chartist');
+      this.$Chartist = Chartist.default || Chartist;
+      this.initChart();
+    },
+ 
+
   }
 </script>
 <style>
