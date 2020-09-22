@@ -3,10 +3,6 @@
     <h4 slot="header" class="card-title">Add new Transaction</h4>
     <form>
       <div class="row">
-        <!-- <div class="col-md-8">
-          <base-input type="text" label=" user Name" placeholder=" Name" v-model="transaction.name"></base-input>
-        </div> -->
-
         <div class="form-group col-md-8">
           <label for="exampleFormControlSelect1">Select Supplier</label>
           <select
@@ -41,11 +37,7 @@
 
         <div class="form-group col-md-8">
           <label for="exampleFormControlSelect1">Select Month</label>
-          <select
-            class="form-control col-md-8"
-            id="exampleFormControlSelect1"
-            v-model="transaction.month_id"
-          >
+          <select class="form-control col-md-8" id="exampleFormControlSelect1" v-model="month_id">
             <option
               v-for="month in billingMonths"
               v-bind:key="month.id"
@@ -55,8 +47,9 @@
           </select>
         </div>
 
-          <div class="col-md-8">
-          <base-input type="date" label="  Date" placeholder=" Name" v-model="transaction.date"></base-input>
+        <div class="col-md-8">
+          <label for="exampleFormControlSelect1">Select Date</label>
+          <b-form-datepicker v-model="transaction.date" :min="min" :max="max" locale="en"></b-form-datepicker>
         </div>
 
         <div class="row col-md-8">
@@ -91,10 +84,8 @@
 
 
 <script>
-// import Datepicker from 'vuejs-datepicker';
 import Datepicker from "vue2-datepicker";
 import "vue2-datepicker/index.css";
-
 import axios from "axios";
 export default {
   components: {
@@ -105,7 +96,9 @@ export default {
       suppliers: [],
       products: [],
       billingMonths: [],
-
+      min: "",
+      max: "",
+      month_id: "",      //it is outside 
       transaction: {
         user_id: "",
         product_id: "",
@@ -118,20 +111,18 @@ export default {
     };
   },
   methods: {
-    //not used
-    //  customFormatter(date) {
-    //   return moment(date).format('YYYY MM DD');
-    // },
+  
     addMonth() {
-      // alert("Your data: " + JSON.stringify(this.transaction));
       const baseURI = "api/transactions";
-      axios.post(baseURI, this.transaction).then((response) => {
-        console.log(response);
-        this.$router.push("/admin/transactions");
-      })
-      .catch(error => {
-           alert('Please fill the form properly');
-      });
+      axios
+        .post(baseURI, this.transaction)
+        .then((response) => {
+          console.log(response);
+          this.$router.push("/admin/transactions");
+        })
+        .catch((error) => {
+          alert("Please fill the form properly");
+        });
     },
     getSuppliers() {
       const baseURI = "api/suppliers";
@@ -152,6 +143,15 @@ export default {
       this.$http.get(baseURI).then((response) => {
         console.log(response);
         this.billingMonths = response.data;
+      });
+    },
+  },
+  watch: {                              // a watcher on month selection to selcete date accordingly
+    month_id: function (val) {
+      this.transaction.month_id = val;
+      this.$http.get("api/months/" + val).then((response) => {
+        this.min = response.data.start_date;
+        this.max = response.data.end_date;
       });
     },
   },
