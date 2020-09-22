@@ -76,8 +76,9 @@ export default {
       //implement axios to get customers
       const baseURI = "api/totalbymonth/"+this.currentMonth;
         axios.get(baseURI).then((response) => {
-        console.log(response.data);
+        
         this.total = response.data;
+        
       });
     },
 
@@ -86,12 +87,21 @@ export default {
       const baseURI = "api/transactions/"+e;
       axios.delete(baseURI)
       .then((response) => {
-      this.getmonths();
+       
+      this.getTransactionsByMonth();
+       this.getMonthTotal();
+       
       console.log(response);
       // this.$router.push('/admin/products');
 
       });
   }
+  },
+   watch: {
+    total:function() {
+      console.log(this.total)
+    },
+    
   },
   created() {
     //call getproducts here

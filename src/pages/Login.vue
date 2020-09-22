@@ -71,6 +71,9 @@ export default {
         localStorage.setItem("id", userId);
         this.$router.push("/admin/overview");
         this.$router.go();
+      })
+      .catch(error => {
+           alert('Your email or password is invalid');
       });
     },
   },

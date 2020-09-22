@@ -71,6 +71,8 @@ export default {
       this.$http.get(baseURI).then((response) => {
         console.log(response);
         this.suppliers = response.data;
+      }).catch(error => {
+           alert('Please fill the form properly');
       });
     },
   },

@@ -80,13 +80,6 @@ export default {
       });
      
     },
-    // getSuppliers() {
-    //   const baseURI = "http://127.0.0.1:8000/api/suppliers";
-    //   this.$http.get(baseURI).then((response) => {
-    //     console.log(response);
-    //     this.suppliers = response.data;
-    //   });
-    // },
   },
   created() {
     // this.getSuppliers();

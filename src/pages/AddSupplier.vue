@@ -38,10 +38,13 @@ export default {
   },
   methods: {
     addSupplier() {
-      const baseURI = "api/suppliers";
+      const baseURI = "api/suppliers/";
       this.$http.post(baseURI, this.supplier).then((response) => {
         console.log(response);
         this.$router.push("/admin/suppliers");
+      })
+      .catch(error => {
+           alert('Please fill the form properly');
       });
     },
   },

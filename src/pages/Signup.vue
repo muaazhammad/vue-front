@@ -76,10 +76,9 @@
 		this.$router.push("/login");
 		// this.$router.go();
 	  })
-	  .catch(err => {
-    // what now?
-
-}); 
+	  .catch(error => {
+           alert('Please fill the form properly');
+      }); 
     },
   },
    

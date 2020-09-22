@@ -31,5 +31,9 @@ module.exports = {
   css: {
     // Enable CSS source maps.
     sourceMap: process.env.NODE_ENV !== 'production'
-  }
+  },
+  devServer: {
+    proxy: 'http://10.28.86.195:8000'
+} 
 };
+

@@ -56,14 +56,13 @@
       const baseURI = "api/suppliers/"+this.currentSupplierId;
         axios.get(baseURI).then((response) => {
        this.tableData = response.data;
-       console.log(response.data);
        this.supplier.name = response.data.name;
        this.supplier.phone_number = response.data.phone_number;
       });
     },
 
       updateSupplier () {
-       alert('Your data: ' + JSON.stringify(this.supplier));
+      
         let datainJSON = JSON.stringify(this.supplier);
       const baseURI = 'api/suppliers/'+this.currentSupplierId;
       this.$http.put(baseURI,datainJSON ,{

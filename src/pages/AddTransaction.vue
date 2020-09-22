@@ -128,6 +128,9 @@ export default {
       axios.post(baseURI, this.transaction).then((response) => {
         console.log(response);
         this.$router.push("/admin/transactions");
+      })
+      .catch(error => {
+           alert('Please fill the form properly');
       });
     },
     getSuppliers() {
