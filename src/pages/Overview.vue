@@ -83,7 +83,11 @@
 
  <div>
 
+
+
   </div>
+
+
 
      </div>
   </div>
@@ -96,16 +100,25 @@
   import LTable from 'src/components/Table.vue'
     // import Navbar from './components/Navbar.vue';  
   import axios from "axios";
+  import PureVueChart from 'pure-vue-chart';
+  import { D3BarChart } from 'vue-d3-charts';
 
   export default {
     components: {
       LTable,
       ChartCard,
-      StatsCard
+      StatsCard,
+      PureVueChart,
+      D3BarChart
     },
     data () {
 
       return {
+
+         data: {
+            labels: [],
+            series: [],
+          },
 
         editTooltip: 'Edit Task',
         deleteTooltip: 'Remove',
@@ -182,6 +195,7 @@
       
       }
     },
+
     methods:{
          
       getTotalProducts() {
@@ -206,6 +220,9 @@
         this.TotalBill = response.data.sum;
         this.barChart.data.labels=response.data.dates;
          this.barChart.data.series[0]=response.data.prices;
+         this.data.labels=response.data.dates;
+         this.data.series=response.data.prices;
+
       });
     },
            

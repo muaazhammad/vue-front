@@ -20,7 +20,8 @@ import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+import excel from 'vue-excel-export'
+ 
 
 
 
@@ -43,6 +44,7 @@ import './registerServiceWorker'
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(LightBootstrap)
+Vue.use(excel)
 
 // configure router
 const router = new VueRouter({

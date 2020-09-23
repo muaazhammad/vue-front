@@ -154,7 +154,10 @@ export default {
           console.log(response);
 
           this.$router.push("/admin/transactions");
-        });
+        })
+        .catch(error => {
+           alert('Please fill the form properly');
+      });
     },
 
     addMonth() {
