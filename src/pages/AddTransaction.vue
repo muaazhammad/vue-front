@@ -58,7 +58,7 @@
               type="text"
               label=" Quantity"
               placeholder=" Quantity"
-              v-model="transaction.quantity"
+              v-model="quantity"
             ></base-input>
           </div>
         </div>
@@ -99,6 +99,7 @@ export default {
       min: "",
       max: "",
       month_id: "",      //it is outside 
+      quantity: "",
       transaction: {
         user_id: "",
         product_id: "",
@@ -152,6 +153,13 @@ export default {
       this.$http.get("api/months/" + val).then((response) => {
         this.min = response.data.start_date;
         this.max = response.data.end_date;
+      });
+    },
+      quantity: function (val) {       // a watcher to calculate price automatically
+      this.transaction.quantity = val;
+      this.$http.get("api/products/" +this.transaction.product_id).then((response) => {
+        this.transaction.price = response.data.price * val;
+     
       });
     },
   },

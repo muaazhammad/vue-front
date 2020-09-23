@@ -22,22 +22,22 @@
     props: {
       chartType: {
         type: String,
-        default: 'Bar' // Line | Pie | Bar
+        // default: 'Bar' // Line | Pie | Bar
       },
       chartOptions: {
         type: Object,
-        default: () => {
-          return {}
-        }
+        // default: () => {
+        //   return {}
+        // }
       },
       chartData: {
         type: Object,
-        default: () => {
-          return {
-            labels: [],
-            series: []
-          }
-        }
+        // default: () => {
+        //   return {
+        //     labels: [],
+        //     series: []
+        //   }
+        // }
       },
       responsiveOptions: [Object, Array]
     },
@@ -45,7 +45,10 @@
       return {
         chartId: 'no-id',
         $Chartist: null,
-        chart: null
+        chart: null,
+        data1:this.chartData,
+        options1:this.chartOptions
+
       }
     },
     methods: {
@@ -54,7 +57,7 @@
        */
       initChart () {
         var chartIdQuery = `#${this.chartId}`
-        this.chart = this.$Chartist[this.chartType](chartIdQuery, this.chartData, this.chartOptions, this.responsiveOptions)
+        this.chart = this.$Chartist[this.chartType](chartIdQuery, this.data1, this.options1, this.responsiveOptions)
         this.$emit('initialized', this.chart)
         if (this.chartType === 'Line') {
           this.animateLineChart()
@@ -123,6 +126,7 @@
           }
         })
       }
+      
     },
     async mounted () {
      

@@ -61,9 +61,9 @@
 
 
        <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-9 col-sm-12">
           <chart-card
-            :chart-data="barChart.data"
+            :chartData="barChart.data"
             :chartOptions="barChart.options"
             :chart-responsive-options="barChart.responsiveOptions"
             chartType="Bar">
@@ -82,7 +82,7 @@
       </div> 
 
  <div>
-    <b-form-datepicker v-model="value" :min="min" :max="max" locale="en"></b-form-datepicker>
+
   </div>
 
      </div>
@@ -105,27 +105,7 @@
     },
     data () {
 
-
-  const now = new Date()
-      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-      // 15th two months prior
-      const minDate = new Date(today)
-      minDate.setMonth(minDate.getMonth() - 2)
-      minDate.setDate(15)
-      // 15th in two months
-      const maxDate = new Date(today)
-      maxDate.setMonth(maxDate.getMonth() + 2)
-      maxDate.setDate(15)
-
-
-
-
       return {
-
-        value: '',
-        min: minDate,
-        max: maxDate,
-
 
         editTooltip: 'Edit Task',
         deleteTooltip: 'Remove',
@@ -194,7 +174,6 @@
           ]
         },
  
-      
         totalProducts:'',
         totalSuppliers:'',
         TotalBill:'',
